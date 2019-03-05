@@ -36,7 +36,7 @@ int main(){
     U1 = (k * ((pow(r1, 2) / 2) - (d * r1))) + (k * r1 * (r2 - d)) - (k * (pow(r1, 2) / 2));
     U2 = (k * ((pow(r2, 2) / 2) - (2 * d * r2))) + (k * r2 * (- r1 - d)) + (k * (pow(r2, 2) / 2));
     t += dt;
-    printf("%lf, %lf, %lf\n", t, r1, r2);
+    printf("%lf, %lf, %lf\n", t, U1, U2);
     }
 
 return 0;
