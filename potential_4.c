@@ -55,7 +55,7 @@ int main(){
     U2 = (k * ((r2 * (- r1 - d)) + ((pow(r2, 2.0) / 2)))) + (k * ((r2 * (- r3 + d)) + ((pow(r2, 2.0)) / 2)));
     U3 = (k * ((r3 * (- r2 - d)) + ((pow(r3, 2.0) / 2)))) + (k * ((r3 * (- r4 + d)) + ((pow(r3, 2.0)) / 2)));
     U4 = (k * ((r4 * (- r3 - d)) + ((pow(r4, 2.0) / 2)))) + (k * ((pow(r4, 2.0) / 2) - (4 * d * r4)));
-    printf("%lf, %lf, %lf, %lf, %lf, %lf, %lf\n", t, r1, r2, r3, U1, U2, U3);
+    printf("%lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf\n", t, r1, r2, r3, r4, U1, U2, U3, U4);
     t += dt;
     }
 
