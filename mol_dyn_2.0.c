@@ -2,23 +2,7 @@
 #include <math.h>
 
 int main(){
-    double t = 0.0, a1 = 0.0, a2 = 0.0, r1, r2, v1, v2, F1, F2, dt, tt, m, k;
-    printf("Initial distance from equilibrium position 1(m): ");
-    scanf("%lf", &r1);
-    printf("Initial velocity 1(m/s): ");
-    scanf("%lf", &v1);
-    printf("Initial distance from equilibrium position 2(m): ");
-    scanf("%lf", &r2);
-    printf("Initial velocity 2(m/s): ");
-    scanf("%lf", &v2);
-    printf("Mass (kg): ");
-    scanf("%lf", &m);
-    printf("Spring constant: ");
-    scanf("%lf", &k);
-    printf("Test time (s): ");
-    scanf("%lf", &tt);
-    printf("Time steps (s): ");
-    scanf("%lf", &dt);
+    double t = 0.0, a1 = 0.0, a2 = 0.0, r1 = 0.1, r2 = 0.2, v1 = -0.1, v2 = 0.1, F1, F2, dt = 0.0001, tt = 10.0, m = 0.2, k = 800.0;
 
     while(t <= tt){
     r1 = r1 + (v1 * dt) + (0.5 * a1 * pow(dt, 2.0));
