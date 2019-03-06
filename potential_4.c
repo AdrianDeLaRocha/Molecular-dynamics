@@ -22,7 +22,7 @@ int main(){
     scanf("%lf", &v3);
     printf("Initial distance from equilibrium position 4: ");
     scanf("%lf", &r4);
-    r3 = r4 + (4 * d);
+    r4 = r4 + (4 * d);
     printf("Initial velocity 4: ");
     scanf("%lf", &v4);
     printf("Mass: ");
