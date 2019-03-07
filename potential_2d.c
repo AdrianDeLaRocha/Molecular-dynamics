@@ -13,6 +13,14 @@ int main(){
     double Fy1, Fy2, Fy3, Fy4;
     double Ux1, Ux2, Ux3, Ux4;
     double Uy1, Uy2, Uy3, Uy4;
+    x1 = x1 + d;
+    x2 = x2 + (2 * d);
+    x3 = x3 + d;
+    x4 = x4 + (2 * d);
+    y1 = y1 + d;
+    y2 = y2 + d;
+    y3 = y3 + (2 * d);
+    y4 = y4 + (2 * d);
 
     while(t <= tt){
     x1 = x1 + (vx1 * dt) + (0.5 * ax1 * pow(dt, 2.0));
