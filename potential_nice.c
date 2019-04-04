@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+#include <iostream>
+#include <fstream>
 
 #define Num 10
 #define TT 5.0
@@ -95,6 +97,8 @@ double* vel_arr(int N, struct particle data[]){
 }
 
 int main(){
+    ofstream myfile;
+    myfile.open ("data.txt");
     int i, id[Num];
     double t;
     struct particle data[Num];
@@ -109,10 +113,11 @@ int main(){
 
     for(t = 0.0; t <= TT; t += DT){
         mol_dyn(Num, data);
-        printf("%lf, ", t);
+        myfile << "%lf, ", t;
         for(i = 0; i < Num; i++){
-            printf("%lf, ", data[i].s);
+            myfile << "%lf, ", data[i].s;
         }
-        printf("\n");
+        myfile << "\n";
     }
+myfile.close();
 }
