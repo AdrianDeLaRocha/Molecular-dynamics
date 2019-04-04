@@ -45,7 +45,7 @@ double* pos_arr(int N, struct particle data[]){
     }
 
     printf("Define initial positions? [y/n] ");
-    scanf(" %c", c);
+    scanf(" %c", &c);
     while(c != 'y' && c != 'n'){
         printf("Invalid. [y/n] ");
         scanf(" %c", &c);
@@ -74,7 +74,7 @@ double* vel_arr(int N, struct particle data[]){
     }
 
     printf("Define initial velocities? [y/n] ");
-    scanf(" %c", c);
+    scanf(" %c", &c);
     while(c != 'y' && c != 'n'){
         printf("Invalid. [y/n] ");
         scanf(" %c", &c);
@@ -109,9 +109,9 @@ int main(){
 
     for(t = 0.0; t <= TT; t += DT){
         mol_dyn(Num, data);
-        printf("%lf ", t);
+        printf("%lf, ", t);
         for(i = 0; i < Num; i++){
-            printf("%lf ", data[i].s);
+            printf("%lf, ", data[i].s);
         }
         printf("\n");
     }
