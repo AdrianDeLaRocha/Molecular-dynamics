@@ -70,8 +70,8 @@ double* pos_arr(int N, struct particle data[]){
 }
 
 double* vel_arr(int N, struct particle data[]){
-    char c = 'y';
-    int i;
+    char c;
+    int i, m = 0;
 
     for(i = 0; i < N; i++){
         data[i].v = 0.0;
@@ -116,11 +116,14 @@ int main(){
 
     for(t = 0.0; t <= TT; t += DT){
         mol_dyn(Num, data);
-        myfile << t << ", ";
-        for(i = 0; i < Num; i++){
-            myfile << data[i].s << ", ";
+        if((m % 100) == 0){
+            myfile << t << ", ";
+            for(i = 0; i < Num; i++){
+                myfile << data[i].s << ", ";
+            }
+            myfile << "\n";
         }
-        myfile << "\n";
+        m++;
     }
 myfile.close();
 }
