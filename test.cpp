@@ -99,7 +99,7 @@ double* vel_arr(int N, struct particle data[]){
 
 int main(){
     ofstream myfile;
-    myfile.open ("data.txt");
+    myfile.open ("data.csv");
     int i, id[Num];
     double t;
     struct particle data[Num];
@@ -114,9 +114,9 @@ int main(){
 
     for(t = 0.0; t <= TT; t += DT){
         mol_dyn(Num, data);
-        myfile << t << ", ";
+        myfile << t.5 << ", ";
         for(i = 0; i < Num; i++){
-            myfile << data[i].s << ", ";
+            myfile << data[i].s.5 << ", ";
         }
         myfile << "\n";
     }
