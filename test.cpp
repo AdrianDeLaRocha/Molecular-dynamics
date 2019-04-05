@@ -5,6 +5,7 @@
 #include <fstream>
 using namespace std;
 
+#define STEP 100
 #define Num 100
 #define TT 5.0
 #define M 1.0
@@ -71,7 +72,7 @@ double* pos_arr(int N, struct particle data[]){
 
 double* vel_arr(int N, struct particle data[]){
     char c;
-    int i, m = 0;
+    int i;
 
     for(i = 0; i < N; i++){
         data[i].v = 0.0;
@@ -101,7 +102,7 @@ double* vel_arr(int N, struct particle data[]){
 int main(){
     ofstream myfile;
     myfile.open ("data.csv");
-    int i, id[Num];
+    int i, id[Num, print_ctrl = STEP;
     double t;
     struct particle data[Num];
     std::cout << std::fixed << std::setprecision(5);
@@ -116,14 +117,14 @@ int main(){
 
     for(t = 0.0; t <= TT; t += DT){
         mol_dyn(Num, data);
-        if((m % 100) == 0){
+        if((print_ctrl % STEP) == 0){
             myfile << t << ", ";
             for(i = 0; i < Num; i++){
                 myfile << data[i].s << ", ";
             }
             myfile << "\n";
         }
-        m++;
+        print_ctrl++;
     }
 myfile.close();
 }
