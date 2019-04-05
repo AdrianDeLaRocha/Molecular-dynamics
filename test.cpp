@@ -103,6 +103,8 @@ int main(){
     int i, id[Num];
     double t;
     struct particle data[Num];
+    std::cout << std::fixed;
+    std::cout << std::setprecision(5);
     vel_arr(Num, data);
     pos_arr(Num, data);
 
@@ -114,9 +116,9 @@ int main(){
 
     for(t = 0.0; t <= TT; t += DT){
         mol_dyn(Num, data);
-        myfile << t::setprecision(5) << ", ";
+        myfile << t << ", ";
         for(i = 0; i < Num; i++){
-            myfile << data[i].s::setprecision(5) << ", ";
+            myfile << data[i].s << ", ";
         }
         myfile << "\n";
     }
