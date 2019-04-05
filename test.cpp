@@ -102,7 +102,7 @@ double* vel_arr(int N, struct particle data[]){
 int main(){
     ofstream myfile;
     myfile.open ("data.csv");
-    int i, id[Num, print_ctrl = STEP;
+    int i, id[Num], print_ctrl = STEP;
     double t;
     struct particle data[Num];
     std::cout << std::fixed << std::setprecision(5);
