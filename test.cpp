@@ -114,9 +114,9 @@ int main(){
 
     for(t = 0.0; t <= TT; t += DT){
         mol_dyn(Num, data);
-        myfile << t.5 << ", ";
+        myfile << t::setprecision(5) << ", ";
         for(i = 0; i < Num; i++){
-            myfile << data[i].s.5 << ", ";
+            myfile << data[i].s::setprecision(5) << ", ";
         }
         myfile << "\n";
     }
