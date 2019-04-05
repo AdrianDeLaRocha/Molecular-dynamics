@@ -103,8 +103,7 @@ int main(){
     int i, id[Num];
     double t;
     struct particle data[Num];
-    std::cout << std::fixed;
-    std::cout << std::setprecision(5);
+    std::cout << std::fixed << std::setprecision(5);
     vel_arr(Num, data);
     pos_arr(Num, data);
 
