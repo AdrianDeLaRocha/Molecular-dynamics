@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 using namespace std;
 
-#define Num 10
+#define Num 100
 #define TT 5.0
 #define M 1.0
 #define K 500.0
