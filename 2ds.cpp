@@ -28,11 +28,11 @@ struct particle{
     int id;
 };
 
-double* pos_arr(int Num_tot, struct particle data[]){
+double* pos_arr(int Num, struct particle array[]){
     char c, axis;
     int i;
 
-    for(i = 0; i < Num_tot; i++){
+    for(i = 0; i < Num; i++){
         data[i].x = 0.0;
         data[i].y = 0.0;
     }
@@ -65,11 +65,11 @@ double* pos_arr(int Num_tot, struct particle data[]){
     }
 }
 
-double* vel_arr(int Num_tot, struct particle data[]){
+double* vel_arr(int Num, struct particle array[]){
     char c, axis;
     int i;
 
-    for(i = 0; i < Num_tot; i++){
+    for(i = 0; i < Num; i++){
         data[i].vel_x = 0.0;
         data[i].vel_y = 0.0;
     }
@@ -106,7 +106,7 @@ int main(){
     ofstream myfile;
     myfile.open ("data.csv");
     int Num_tot = Num_x * Num_y;
-    int i, n, Num, id[Num_tot], print_ctrl = STEP;
+    int i, n, Num, print_ctrl = STEP;
     double t;
     struct particle data[Num_tot];
     std::cout << std::fixed << std::setprecision(5);
@@ -120,6 +120,7 @@ int main(){
         data[i].acc_y = 0.0;
         data[i].For_x = 0.0;
         data[i].For_y = 0.0;
+        data[i].id = i;
     }
 
     myfile << "Time" << ", ";
@@ -132,37 +133,37 @@ int main(){
     myfile << "\n";
 
     for(t = 0.0; t <= TT; t += DT){
-    // Getting updates for the x-axis.
-    for(i = 0; i < (Num_tot); i++){
-        if((i + Num_x) % Num_x == 0){
-            data[i].For_x = (-K * (data[i].x - D)) + (-K * (data[i].x - data[i+1].x + D));
+        // Getting updates for the x-axis.
+        for(i = 0; i < (Num_tot); i++){
+            if((i + Num_x) % Num_x == 0){
+                data[i].For_x = (-K * (data[i].x - D)) + (-K * (data[i].x - data[i+1].x + D));
+            }
+            else if((i + Num_x) % Num_x == (Num_x - 1)){
+                data[i].For_x = (-K * (data[i].x - data[i-1].x - D)) + (-K * (data[i].x - (Num_x * D)));
+            }
+            else{
+                data[i].For_x = (-K * (data[i].x - data[i-1].x - D)) + (-K * (data[i].x - data[i+1].x + D));
+            }
+            data[i].acc_x = data[i].For_x / M;
+            data[i].vel_x = data[i].vel_x + (data[i].acc_x * DT);
+            data[i].x = data[i].x + (data[i].vel_x * DT) + (data[i].acc_x * 0.5 * pow(DT, 2.0));
         }
-        else if((i + Num_x) % Num_x == (Num_x - 1)){
-            data[i].For_x = (-K * (data[i].x - data[i-1].x - D)) + (-K * (data[i].x - (Num_x * D)));
-        }
-        else{
-            data[i].For_x = (-K * (data[i].x - data[i-1].x - D)) + (-K * (data[i].x - data[i+1].x + D));
-        }
-        data[i].acc_x = data[i].For_x / M;
-        data[i].vel_x = data[i].vel_x + (data[i].acc_x * DT);
-        data[i].x = data[i].x + (data[i].vel_x * DT) + (data[i].acc_x * 0.5 * pow(DT, 2.0));
-    }
 
-    // Getting updates for the y-axis.
-    for(i = 0; i < (Num_tot); i++){
-        if(i < Num_x){
-            data[i].For_y = (-K * (data[i].y - D)) + (-K * (data[i].y - data[i+Num_x].y + D));
+        // Getting updates for the y-axis.
+        for(i = 0; i < (Num_tot); i++){
+            if(i < Num_x){
+                data[i].For_y = (-K * (data[i].y - D)) + (-K * (data[i].y - data[i+Num_x].y + D));
+            }
+            else if(((i - 1) / Num_x == Num_y)){
+                data[i].For_y = (-K * (data[i].y - data[i-Num_x].y - D)) + (-K * (data[i].y - (Num_y * D)));
+            }
+            else{
+                data[i].For_y = (-K * (data[i].y - data[i-Num_x].y - D)) + (-K * (data[i].y - data[i+Num_x].y + D));
+            }
+            data[i].acc_y = data[i].For_y / M;
+            data[i].vel_y = data[i].vel_y + (data[i].acc_y * DT);
+            data[i].y = data[i].y + (data[i].vel_y * DT) + (data[i].acc_y * 0.5 * pow(DT, 2.0));
         }
-        else if(((i - 1) / Num_x == Num_y)){
-            data[i].For_y = (-K * (data[i].y - data[i-Num_x].y - D)) + (-K * (data[i].y - (Num_y * D)));
-        }
-        else{
-            data[i].For_y = (-K * (data[i].y - data[i-Num_x].y - D)) + (-K * (data[i].y - data[i+Num_x].y + D));
-        }
-        data[i].acc_y = data[i].For_y / M;
-        data[i].vel_y = data[i].vel_y + (data[i].acc_y * DT);
-        data[i].y = data[i].y + (data[i].vel_y * DT) + (data[i].acc_y * 0.5 * pow(DT, 2.0));
-    }
         if((print_ctrl % STEP) == 0){
             myfile << t << ", ";
             for(i = 0; i < Num_tot; i++){
