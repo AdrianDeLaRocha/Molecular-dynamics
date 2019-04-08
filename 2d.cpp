@@ -159,7 +159,7 @@ int main(){
     ofstream myfile;
     myfile.open ("data.csv");
     int Num_tot = Num_x * Num_y;
-    int i, id[Num_tot], print_ctrl = STEP;
+    int i, print_ctrl = STEP;
     double t;
     struct particle data[Num_tot];
     std::cout << std::fixed << std::setprecision(5);
@@ -173,6 +173,7 @@ int main(){
         data[i].acc_y = 0.0;
         data[i].For_x = 0.0;
         data[i].For_y = 0.0;
+        data[i].id = i;
     }
 
     for(i = 0; i < Num_tot; i++){
