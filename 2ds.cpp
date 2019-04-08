@@ -33,8 +33,8 @@ double* pos_arr(int Num, struct particle array[]){
     int i;
 
     for(i = 0; i < Num; i++){
-        data[i].x = 0.0;
-        data[i].y = 0.0;
+        array[i].x = 0.0;
+        array[i].y = 0.0;
     }
 
     printf("Define initial positions? [y/n] ");
@@ -51,10 +51,10 @@ double* pos_arr(int Num, struct particle array[]){
         scanf(" %d", &i);
         printf("%c[%d]: ", axis, i);
         if(axis == 'x'){
-            scanf(" %lf", &data[i].x);
+            scanf(" %lf", &array[i].x);
         }
         if(axis == 'y'){
-            scanf(" %lf", &data[i].y);
+            scanf(" %lf", &array[i].y);
         }
         printf("Add another initial position? [y/n] ");
         scanf(" %c", &c);
@@ -70,8 +70,8 @@ double* vel_arr(int Num, struct particle array[]){
     int i;
 
     for(i = 0; i < Num; i++){
-        data[i].vel_x = 0.0;
-        data[i].vel_y = 0.0;
+        array[i].vel_x = 0.0;
+        array[i].vel_y = 0.0;
     }
 
     printf("Define initial velocities? [y/n] ");
@@ -88,10 +88,10 @@ double* vel_arr(int Num, struct particle array[]){
         scanf(" %d", &i);
         printf("v%c[%d]: ", axis, i);
         if(axis == 'x'){
-            scanf(" %lf", &data[i].vel_x);
+            scanf(" %lf", &array[i].vel_x);
         }
         if(axis == 'y'){
-            scanf(" %lf", &data[i].vel_y);
+            scanf(" %lf", &array[i].vel_y);
         }
         printf("Add another initial velocity? [y/n] ");
         scanf(" %c", &c);
