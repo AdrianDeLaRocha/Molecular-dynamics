@@ -175,5 +175,5 @@ int main(){
         }
         print_ctrl++;
     }
-myfile.close();
+    myfile.close();
 }
