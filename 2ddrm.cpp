@@ -6,8 +6,8 @@
 using namespace std;
 
 #define STEP 100
-#define Num_x 2
-#define Num_y 2
+#define Num_x 10
+#define Num_y 10
 #define TT 5.0
 #define DT 0.0001
 #define E 1.65e-6
@@ -33,6 +33,7 @@ int main(){
     char c, axis;
     int Num_tot = Num_x * Num_y;
     int i, n, print_ctrl = STEP;
+    double temp;
     long double t, rm, part, Fx, Fy, dist, delt_x, delt_y;
     struct particle data[Num_tot];
     std::cout << std::fixed << std::setprecision(5);
@@ -56,10 +57,12 @@ int main(){
         scanf(" %d", &i);
         printf("%c[%d]: ", axis, i);
         if(axis == 'x'){
-            scanf(" %lf", &data[i].x);
+            scanf(" %lf", &temp);
+            data[i].x = temp;
         }
         if(axis == 'y'){
-            scanf(" %lf", &data[i].y);
+            scanf(" %lf", &temp);
+            data[i].y = temp;
         }
         printf("Add another initial position? [y/n] ");
         scanf(" %c", &c);
