@@ -91,8 +91,8 @@ int main(){
         for(i = 0; i < Num_tot; i++){
             for(n = 0; n < Num_tot; n++){
                 if(n != i){
-                    delt_x = data[n].x - data[i].x;
-                    delt_y = data[n].y - data[i].y;
+                    delt_x = data[i].x - data[n].x;
+                    delt_y = data[i].y - data[n].y;
                     dist = sqrt(pow(delt_x, 2.0) + pow(delt_y, 2.0));
                     if(dist <= R && dist >= -R){
                         part =  24 * E * ((2 * pow(S, 12.0) / (pow(dist, 14.0))) - (pow(S, 6.0) / (pow(dist, 8.0))));
