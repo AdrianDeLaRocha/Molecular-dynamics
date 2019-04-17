@@ -16,14 +16,14 @@ using namespace std;
 #define R 10.0
 
 struct particle{
-    double x;
-    double y;
-    double vel_x;
-    double vel_y;
-    double acc_x;
-    double acc_y;
-    double For_x;
-    double For_y;
+    long double x;
+    long double y;
+    long double vel_x;
+    long double vel_y;
+    long double acc_x;
+    long double acc_y;
+    long double For_x;
+    long double For_y;
     int id;
 };
 
@@ -33,7 +33,7 @@ int main(){
     char c, axis;
     int Num_tot = Num_x * Num_y;
     int i, n, print_ctrl = STEP;
-    double t, rm, part, Fx, Fy, dist, delt_x, delt_y;
+    long double t, rm, part, Fx, Fy, dist, delt_x, delt_y;
     struct particle data[Num_tot];
     std::cout << std::fixed << std::setprecision(5);
     rm = S * 1.2222222;
