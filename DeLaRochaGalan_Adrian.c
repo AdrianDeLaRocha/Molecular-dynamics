@@ -28,7 +28,7 @@ Force(int i, int n, struct particle data[]){
     delt_y = data[i].y - data[n].y;
     dist = sqrt(pow(delt_x, 2.0) + pow(delt_y, 2.0));
     if(dist <= R || dist >= -R){
-        part =  24 * E * ((pow(S, 6.0) / (pow(dist, 8.0))) - (2 * pow(S, 12.0) / (pow(dist, 14.0))));
+        part =  24 * E * (2 * (pow(S, 12.0) / (pow(dist, 14.0))) - (pow(S, 6.0) / (pow(dist, 8.0))));
         data[i].For_x += delt_x * part;
         data[i].For_y += delt_y * part;
     }
