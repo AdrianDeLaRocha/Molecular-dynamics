@@ -45,7 +45,8 @@ for i in range(Num_tot):
 f.write("Time, ")
 
 for i in range(Num_tot):
-    f.write("x%d, y%d, " % i % i)
+    f.write("x%d, " % i)
+    f.write("y%d, " % i)
     
 f.write("\n")
 
@@ -72,7 +73,8 @@ for t in range(0.0,pm.TT,pm.DT):
         f.write("%lf, " % t)
         
         for i in range(Num_tot):
-            f.write("%lf, %lf, " % data[0,0,i] % data[0,1,i])
+            f.write("%lf, " % data[0,0,i])
+            f.write("%lf, " % data[0,1,i])
             
         f.write("\n")
         
