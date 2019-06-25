@@ -50,7 +50,7 @@ for i in range(Num_tot):
     
 f.write("\n")
 
-for t in range(0.0,pm.TT,pm.DT):
+while t <= pm.TT:
     for i in range(Num_tot):
         for n in range(Num_tot):
             if n != i:
@@ -78,6 +78,7 @@ for t in range(0.0,pm.TT,pm.DT):
             
         f.write("\n")
         
+    t += pm.DT
     print_ctrl += 1
     
 f.close()
