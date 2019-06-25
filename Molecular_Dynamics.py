@@ -1,5 +1,5 @@
 import numpy as np
-import math as mt
+from math import sqrt
 import parameters as pm
 
 f = open("data.csv","w+")
@@ -57,7 +57,7 @@ while t <= pm.TT:
             if n != i:
                 delt_x = data[0,0,i] - data[0,0,n]
                 delt_y = data[0,1,i] - data[0,1,n]
-                dist = mt.sqrt((delt_x ** 2.0) + (delt_y ** 2.0))
+                dist = sqrt((delt_x ** 2.0) + (delt_y ** 2.0))
                 if dist <= pm.R and dist >= -pm.R:
                     part = 24 * pm.E * (2 * ((pm.S ** 12.0) / (dist ** 14.0)) - ((pm.S ** 6.0) / (dist ** 8.0)))
                     data[3,0,i] += delt_x * part
