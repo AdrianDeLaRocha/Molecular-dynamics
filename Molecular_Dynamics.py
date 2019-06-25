@@ -20,14 +20,14 @@ while c != 'y' and c != 'n':
     c = input('Invalid. [y/n] ')
     
 while c == 'y':
+    p = input('Particle: ')
     axis = input('Axis: ')
-    particle = input('Particle: ')
     
     if axis == 'x':
-        data[0,0,particle]
+        data[0,0,p] = input('x[%s]: ' % p)
         
     if axis == 'y':
-        data[0,1,particle]
+        data[0,1,p] = input('y[%s]: ' % p)
         
     c = input('Add another initial position? [y/n] ')
     
