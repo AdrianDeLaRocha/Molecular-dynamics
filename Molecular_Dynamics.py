@@ -21,6 +21,7 @@ while c != 'y' and c != 'n':
     
 while c == 'y':
     p = input('Particle: ')
+    p = int(p)
     axis = input('Axis: ')
     
     if axis == 'x':
