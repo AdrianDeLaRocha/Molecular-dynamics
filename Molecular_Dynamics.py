@@ -64,7 +64,7 @@ while t <= pm.TT:
                     data[3,1,i] += delt_y * part
     
     for i in range(Num_tot):
-        for n in range(1):
+        for n in range(2):
             data[2,n,i] = data[3,n,i] / pm.M
             data[1,n,i] += data[2,n,i] * pm.DT
             data[0,n,i] += (data[1,n,i] * pm.DT) + ((pm.DT ** 2.0) * data[2,n,i] / 2)
