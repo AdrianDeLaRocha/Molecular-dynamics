@@ -1,17 +1,17 @@
 import numpy as np
 from math import sqrt
-import parameters as pm
+import parameters2d as pm
 
 f = open("data.csv","w+")
 print_ctrl = pm.STEP
 t = 0.0
 rm = pm.S * 1.2222222
 part = 0.0
-Num_tot = pm.Num_x * pm.Num_y * pm.Num_z
-data = np.zeros((4,3,Num_tot))
+Num_tot = pm.Num_x * pm.Num_y
+data = np.zeros((4,2,Num_tot))
 
 for i in range(Num_tot):
-    for n in range(3):
+    for n in range(2):
         data[0,n,i] = 0.0
     
 c = input('Define initial positions? [y/n] ')
@@ -30,9 +30,6 @@ while c == 'y':
     if axis == 'y':
         data[0,1,p] = input('y[%s]: ' % p)
         
-    if axis == 'z':
-        data[0,2,p] = input('z[%s]: ' % p)
-        
     c = input('Add another initial position? [y/n] ')
     
     while c != 'y' and c != 'n':
@@ -41,10 +38,9 @@ while c == 'y':
 for i in range(Num_tot):
     data[0,0,i] += ((i % pm.Num_x) + 1) * rm
     data[0,1,i] += ((i / pm.Num_x) + 1) * rm
-    data[0,2,i] += ((i / (pm.Num_x * pm.Num_y)) + 1) * rm
     
     for n in range(1, 4):
-        for m in range(3):
+        for m in range(2):
             data[n,m,i] = 0.0
             
 f.write("Time, ")
@@ -52,7 +48,6 @@ f.write("Time, ")
 for i in range(Num_tot):
     f.write("x%d, " % i)
     f.write("y%d, " % i)
-    f.write("z%d, " % i)
     
 f.write("\n")
 
@@ -62,16 +57,14 @@ while t <= pm.TT:
             if n != i:
                 delt_x = data[0,0,i] - data[0,0,n]
                 delt_y = data[0,1,i] - data[0,1,n]
-                delt_z = data[0,2,i] - data[0,2,n]
-                dist = sqrt((delt_x ** 2.0) + (delt_y ** 2.0) + (delt_z ** 2.0))
+                dist = sqrt((delt_x ** 2.0) + (delt_y ** 2.0))
                 if dist <= pm.R and dist >= -pm.R:
                     part = 24 * pm.E * (2 * ((pm.S ** 12.0) / (dist ** 14.0)) - ((pm.S ** 6.0) / (dist ** 8.0)))
                     data[3,0,i] += delt_x * part
                     data[3,1,i] += delt_y * part
-                    data[3,2,i] += delt_z * part
-                    
+    
     for i in range(Num_tot):
-        for n in range(3):
+        for n in range(2):
             data[2,n,i] = data[3,n,i] / pm.M
             data[1,n,i] += data[2,n,i] * pm.DT
             data[0,n,i] += (data[1,n,i] * pm.DT) + ((pm.DT ** 2.0) * data[2,n,i] / 2)
@@ -83,7 +76,6 @@ while t <= pm.TT:
         for i in range(Num_tot):
             f.write("%lf, " % data[0,0,i])
             f.write("%lf, " % data[0,1,i])
-            f.write("%lf, " % data[0,2,i])
             
         f.write("\n")
         
